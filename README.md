@@ -30,8 +30,8 @@ The codebase is organised as follows:
 * Operators:
 
   * $H_0$: diagonal matrix of free energies.
-  * $H_2$: normal–ordered $\int dx\,:\!\phi^2\!:$ split into $(\phi^-)^2+(\phi^+)^2+2\phi^-\phi^+$.
-  * $H_4$: normal–ordered $\int dx\,:\!\phi^4\!:$ built from all combinatoric channels $(\phi^\pm)^m(\phi^\mp)^{4-m}$ with momentum conservation.
+  * $H_2$: normal–ordered $\int dx\,:\phi^2:$ split into $(\phi^-)^2+(\phi^+)^2+2\phi^-\phi^+$.
+  * $H_4$: normal–ordered $\int dx\,:\phi^4:$ built from all combinatoric channels $(\phi^\pm)^m(\phi^\mp)^{4-m}$ with momentum conservation.
 * Effective Hamiltonians:
   $H_{\text{eff}}^{(V)}=H_0+\frac{\lambda}{24}\,H_4$, and an $O(V^2)$–improved version $H_{\text{eff}}^{(V^2)}=H_0+\frac{m_2}{2}\,H_2+\frac{\lambda+\lambda_2}{24}\,H_4$, with $m_2,\lambda_2$ computed from UV sums.
 
