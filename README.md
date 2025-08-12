@@ -3,7 +3,7 @@
 This repository contains three Python modules that implement a compact workflow for Hamiltonian Truncation Effective Theory (HTET) in $1+1$ dimensions on a compact spatial circle. The code:
 
 1. builds a Fock basis with fixed total momentum and (optionally) fixed $\mathbb{Z}_2$ parity,
-2. assembles the effective Hamiltonians $H_{\text{eff}}^{(V)}$ and $lambdaH_{\text{eff}}^{(V^2)}$, computes the lowest eigenpairs, and stores them to disk,
+2. assembles the effective Hamiltonians $H_{\text{eff}}^{(V)}$ and $H_{\text{eff}}^{(V^2)}$, computes the lowest eigenpairs, and stores them to disk,
 3. evaluates matrix elements of the energy–momentum tensor $T_{\mu\nu}$ between finite–momentum eigenstates, and
 4. computes two– and three–point correlation functions from the stored eigenvectors.
 
@@ -33,7 +33,7 @@ The codebase is organised as follows:
   * $H_2$: normal–ordered $\int dx\,:\!\phi^2\!:$ split into $(\phi^-)^2+(\phi^+)^2+2\phi^-\phi^+$.
   * $H_4$: normal–ordered $\int dx\,:\!\phi^4\!:$ built from all combinatoric channels $(\phi^\pm)^m(\phi^\mp)^{4-m}$ with momentum conservation.
 * Effective Hamiltonians:
-  $H_{\text{eff}}^{(V)}=H_0+\frac{\lambda}{24}\,H_4$, and an $O(V^2)$–improved version $lambdaH_{\text{eff}}^{(V^2)}=H_0+\frac{m_2}{2}\,H_2+\frac{\lambda+\lambda_2}{24}\,H_4$, with $m_2,\lambda_2$ computed from UV sums.
+  $H_{\text{eff}}^{(V)}=H_0+\frac{\lambda}{24}\,H_4$, and an $O(V^2)$–improved version $H_{\text{eff}}^{(V^2)}=H_0+\frac{m_2}{2}\,H_2+\frac{\lambda+\lambda_2}{24}\,H_4$, with $m_2,\lambda_2$ computed from UV sums.
 
 ---
 
@@ -58,7 +58,7 @@ The `<tag>` encodes the list of allowed momenta via `moments_to_filename`, e.g. 
 
 * `Eigenvec_Emax{Emax}_n{n}.npz`: arrays `coeffs` and `states` for the $n$-th eigenvector.
 * `Eigen_Emax{Emax}_V.txt`, `Eigen_Emax{Emax}_VV.txt`: lowest eigenvalues with and without $O(V^2)$ improvements.
-* `Corr_Emax{Emax}.txt`: the pair $(\delta m^2,\delta\lambda)$ used in $lambdaH_{\text{eff}}^{(V^2)}$.
+* `Corr_Emax{Emax}.txt`: the pair $(\delta m^2,\delta\lambda)$ used in $H_{\text{eff}}^{(V^2)}$.
 * `computation_cost.txt`: rows `Emax Nstate TimeUsed_secondes`, one per new $E_{\max}$.
 
 ---
@@ -79,7 +79,7 @@ python Htet.py Emax Moments Ray La [mode]
 * `La` (float): coupling as $\lambda=4\pi\,\text{La}$.
 * `[mode]` (optional): choose `'even'` or `'odd'` to restrict to a fixed $\mathbb{Z}_2$ parity sector.
 
-On success, the script builds the basis, assembles $H_0,H_2,H_4$, constructs $H_{\text{eff}}^{(V)}$ and $lambdaH_{\text{eff}}^{(V^2)}$, computes the lowest eigenpairs, and saves eigenvalues/eigenvectors and $(\delta m^2,\delta\lambda)$ to the `Data/` tree.
+On success, the script builds the basis, assembles $H_0,H_2,H_4$, constructs $H_{\text{eff}}^{(V)}$ and $H_{\text{eff}}^{(V^2)}$, computes the lowest eigenpairs, and saves eigenvalues/eigenvectors and $(\delta m^2,\delta\lambda)$ to the `Data/` tree.
 
 > **Note.** Internally the code uses: basis generators and filters; the map `the_l(ix)` that interleaves $+\ell$ and $-\ell$; $\omega(k,M,R)$; and sparse builders for the various normal–ordered pieces.
 
